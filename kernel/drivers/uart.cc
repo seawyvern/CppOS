@@ -9,3 +9,10 @@ void uart_putc(char character) {
 
   uart[0] = static_cast<unsigned char>(character);
 }
+
+void uart_puts(const char* text) {
+  while (*text != '\0') {
+    uart_putc(*text);
+    ++text;
+  }
+}

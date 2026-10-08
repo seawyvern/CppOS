@@ -1,7 +1,7 @@
 #include "drivers/uart.h"
 
 extern "C" void kernel_main() {
-  uart_putc('A');
+  uart_puts("Hello from CppOS\r\n");
 
   for (;;) {
   }
