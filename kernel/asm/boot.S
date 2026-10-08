@@ -2,11 +2,21 @@
 .global _start
 
 _start:
+  la t0, __bss_start
+  la t1, __bss_end
+
+1:
+  bgeu t0, t1, 2f
+  sd zero, 0(t0)
+  addi t0, t0, 8
+  j 1b
+
+2:
   la sp, stack_top
   call kernel_main
 
-1:
-  j 1b
+3:
+  j 3b
 
 .section .bss.stack, "aw", @nobits
 .balign 16
