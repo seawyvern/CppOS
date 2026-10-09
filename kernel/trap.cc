@@ -1,4 +1,5 @@
 #include "drivers/uart.h"
+#include "trap.h"
 
 namespace {
 
