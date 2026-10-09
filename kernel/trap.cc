@@ -13,15 +13,13 @@ void print_hex(unsigned long value) {
 
 }  // namespace
 
-extern "C" [[noreturn]] void trap_handler(unsigned long cause,
-                                       unsigned long epc,
-                                       unsigned long tval) {
+extern "C" [[noreturn]] void trap_handler(const TrapFrame* frame) {
   uart_puts("\r\nKernel trap\r\nscause: ");
-  print_hex(cause);
+  print_hex(frame->scause);
   uart_puts("\r\nsepc:   ");
-  print_hex(epc);
+  print_hex(frame->sepc);
   uart_puts("\r\nstval:  ");
-  print_hex(tval);
+  print_hex(frame->stval);
   uart_puts("\r\n");
 
   for (;;) {
