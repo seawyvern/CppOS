@@ -13,6 +13,10 @@ _start:
 
 2:
   la sp, stack_top
+
+  la t0, trap_entry
+  csrw stvec, t0
+
   call kernel_main
 
 3:
